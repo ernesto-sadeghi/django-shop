@@ -1,0 +1,69 @@
+{% load blog_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .border {
+            border: 3px royalblue solid;
+            border-radius: 15px;
+            padding: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% comment %} {%for post in posts%}
+    <h1> {{post.title}}</h1>
+    <p>{{post.content}}</p>
+    <mark>{{post.created_date}}</mark>
+    <hr>
+    {% endfor %} {% endcomment %}
+    <h1>it comes from context ==>     {{posts.title}}</h1>
+
+    <div class="border">
+        <h2>filter tag :</h2>
+        <p>syntax ===>      posts.content|snippet:50</p>
+        <h2>posts.content ==> {{ posts.content|snippet:50 }}</h2>
+    </div>
+
+
+
+    <hr>
+    <h3>simple tag :</h3>
+    <mark>{% count %}</mark>
+    <hr>
+
+    <div class="border">
+
+        <h3>simple tag :</h3>
+        {% all as newVar %}
+        {% for i in newVar %}
+
+        <div class="border">
+            {{i}}<br>
+        </div>
+
+        {% endfor %}
+    </div>
+
+    <div class="border">
+        <h1 dir="rtl">inclusion tag </h1>
+        <p dir="rtl">
+            1.تو مقادیر پاس میدی به یه فایل دیگه 
+            <br>
+            2.تو اون فایل هر غلطی خواستی باهاش میکنی
+            <br>
+            3. اینجا فقط تابعو صدا میکنی
+        </p>
+
+        {% popular %}
+    </div>
+
+</body>
+
+</html>
